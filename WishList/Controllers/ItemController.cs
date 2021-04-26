@@ -14,13 +14,13 @@ namespace WishList.Controllers
 
         public ItemController(ApplicationDbContext applicationDbContext)
         {
-            _context = applicationDbContext;
+            this._context = applicationDbContext;
         }
 
         public IActionResult Index()
         {
-
-            return View(_context.Items);
+            List<Item> items = _context.Items.ToList();
+            return View(items);
         }
 
         [HttpPost]
